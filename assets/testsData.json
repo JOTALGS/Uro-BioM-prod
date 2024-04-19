@@ -1,0 +1,37 @@
+[
+    {
+        "testName": "4KScore",
+        "informacion0": "El test 4Kscore mide los valores del PSA, PSA libre, PSA intacto y la Calicrereína Humana 2 (H2K) en sangre, y confiere un score basado en estas medidas, así como en la edad del paciente y los hallazgos del último tacto rectal.\n\n• Mejora el PPV del PSA\n• Disminuye el número de biopsia\n",
+        "informacion1": "\nVentajas:\n• Método no invasivo (muestra de sangre)\n• Evita biopsias innecesaria (30%-60%)\n• Superior al PSA, PSAlibre/PSAtotal y PSA D para diagnosticar CaP\n• Capacidad de predecir CaP Gleason 7 o mayor\n\nDesventajas:\n• Mayores costos\n• Los resultados son interferidos por inhibidores de la 5-α-reductasa. Requiere de interrupción del tratamiento por al menos 6 meses. \n\nReferencias:\n\n",
+        "conducta": "Postura recomendada ante los resultados:\n\n• Score < 7,5%:  control evolutivo, bajo riesgo de tumor significativo.\n\n• Score > 7,5%:  se recomienda realizar biopsia.",
+        "logistica": "\nReporte gráfico en español y reporte clínico en inglés.\n\n• El paciente no debe estar bajo tratamiento con inhibidores de la 5-α-reductasa.\n\n• No se puede haber realizado un TR en las 96 hs previas."
+    },
+    {
+        "testName": "SelectMDX",
+        "informacion0": "• Estudio genético en orina\n• Modelo multimodal que incorpora como biomarcadores urinarios:\n   → Los genes HOXC6 y DLX1\n   → La edad del paciente\n   → El valor y la densidad del último PSA\n   → Historia personal de biopsias prostáticas\n   → Historia familiar\n\n",
+        "informacion1": "\nVentajas:\n• Alto VPN para tumores clínicamente significativos\n• Método no invasivo (muestra de orina)\n• Evita repetición de biopsias innecesarias\n\nDesventajas:\n• Mayores costos\n• No existe un punto de corte establecido que facilite el accionar del urólogo\n\nReferencias:\n\n",
+        "conducta": "• Informa el resultado como la probabilidad (en %) de padecer un tumor de alto y bajo riesgo.\n• Con estos datos se debe decidir si realizar una biopsia prostática, u otros estudios.",
+        "logistica": "\nReporte en inglés.\n\n• El paciente no debe estar bajo tratamiento con inhibidores de la 5-α-reductasa.\n• Fecha del último PSA ≤ 6 meses.\n• Fecha de la última biopsia (en caso de corresponder) ≤ 3 meses.\n• Se requiere aportar valor del último PSA, volumen prostático, antecedentes familiares de CaP y raza.\n\n"
+    },
+    {
+        "testName": "ConfirmMDX",
+        "informacion0": "Análisis genómico que evalúa la expresión de 17 genes, incluidos 12 genes relacionados con cáncer representativos de 4 vías biológicas clave, y 5 genes de referencia.\nSe indica en pacientes con CaP de bajo o muy bajo riesgo, en los que se quiere optar por una vigilancia activas.\n\nPredictor de:\n• Tumores con Gleason ≥ 7\n• Tumores no confinados a la próstata\n• Recurrencia bioquímica\n• Metástasis a distancia\n\nVentajas:\n• Método no invasivo (se analiza el tejido de la última biopsia).\n• Es un buen marcador pronostico; predice patologías adversas y la recurrencia.\n• Respalda la decisión de vigilancia activa.\n\nDesventajas:\n• Mayores costos.\n• Los resultados son interferidos por inhibidores de la 5-α-reductasa. Requiere de interrupción del tratamiento por al menos 6 meses.\n• El tejido biópsico no debe haber recibido radioterapia.\n\nReferencias:\n\n",
+        "informacion1": "\n\nDesventajas:\n\n• Aumenta los costos\n",
+        "conducta": "• Indicar biopsia prostática dirigida hacia los cilindros con metilación aberrante positiva.",
+        "logistica": "\nReporte en inglés.\n• Fecha de la última biopsia ≤ 24 meses"
+    },
+    {
+        "testName": "Oncotype",
+        "informacion0": "Análisis genómico que evalúa la expresión de 17 genes, incluidos 12 genes relacionados con cáncer representativos de 4 vías biológicas clave, y 5 genes de referencia.\nSe indica en pacientes con CaP de bajo o muy bajo riesgo, en los que se quiere optar por una vigilancia activas.\n\nPredictor de:\n• Tumores con Gleason ≥ 7\n• Tumores no confinados a la próstata\n• Recurrencia bioquímica\n• Metástasis a distancia\n\nVentajas:\n• Método no invasivo (se analiza el tejido de la última biopsia).\n• Es un buen marcador pronostico; predice patologías adversas y la recurrencia.\n• Respalda la decisión de vigilancia activa.\n\nDesventajas:\n• Mayores costos.\n• Los resultados son interferidos por inhibidores de la 5-α-reductasa. Requiere de interrupción del tratamiento por al menos 6 meses.\n• El tejido biópsico no debe haber recibido radioterapia.\n\nReferencias:\n",
+        "informacion1": "",
+        "conducta": "Postura recomendada ante los resultados:\n\n• GPS de bajo o muy bajo riesgo: sugerir vigilancia activa.\n• GPS de riesgo intermedio: sugerir Prostatectomía o Radioterapia (en casos particulares puede considerarse terapia focal o vigilancia activa).",
+        "logistica": "\nReporte en inglés.\n\n• Fecha de la biopsia ≤ 3 años.\n• No se acepta tejido de RTU.\n• No se puede realizar sobre tejido que fue sometido a Redioterapia.\n\nCriterios de inclusión:\nvacio."
+    },
+    {
+        "testName": "Decipher",
+        "informacion0": "El Clasificador Genómico Decipher, evalúa la expresión de 22 genes vinculados a diferentes vías biológicas del CaP. Brinda información que permite establecer con mayor precisión el riesgo de un tumor localizado, y por ende definir con más argumentos el o los tratamientos a realizar.\n\nSi el resultado es bajo riesgo genético se puede optar, dependiendo del riesgo clásico, por una vigilancia activa o un tratamiento radical.\n\nUn resultado de alto riesgo genético sugiere un tratamiento multimodal.\n\nVentajas:\n1. No aumenta invasividad (se utiliza tejido)\n2. Nos permite establecer con mayor precisión el riesgo tumoral, y por ende, definir con mayor certeza el tratamiento\n\nDesventajas:\n1. Aumenta los costos\n\nReferencias:\n1. Aumenta los costos\n\nSolicitar referencias a",
+        "informacion1": "",
+        "conducta": "Bajo riesgo y NCCN bajo: sugerir VA.\n\nBajo riesgo y NCCN intermedio o alto: sugerir RT o PR.\n\nAlto riesgo y cualquier NCCN: sugerir terapia intensificada o multimodal",
+        "logistica": "Muestra de tejido de la Prostatectomía Radical, bloque de mayor compromiso tumoral\n\nResultados en 22 días\n\nReporte en inglés\n\nAntigüedad máxima del tejido: 5 años\n\nSe requiere reporte de Anatomía Patológica\n\nNo se puede realizar sobre tejido que fue sometido a Radioterapia\n\nCriterios de Inclusión\n\nNCCN Muy bajo riesgo (debe presentar TODOS los siguientes criterios):\n- Gleason Score ≤ 6\n- PSA < 10 ng/mL\n- Estadio clínico T1c\n- Menos de 3 cilindros/filamentos positivos, ≤ 50% compromiso tumoral en cualquier cilindro/filamento\n- PSA densidad < 0.15 ng/mL/g\n\nNCCN Bajo riesgo (debe presentar TODOS los siguientes criterios):\n- Gleason Score ≤ 6\n- PSA < 10 ng/mL\n- Estadio Clínico T1c-T2a\n\nNCCN Riesgo intermedio (debe cumplir UNO de los siguientes criterios):\n- Gleason Score ≤ 6, Y\n* Estadio Clínico T2b-T2c, O\n* PSA 10-20 ng/mL\n- Gleason Score 3+4, Y todo lo siguiente:\n* Estadio Clínico T1c-T2c\n* PSA ≤ 20 ng/mL\n- Gleason Score 4+3, Y todo los siguiente:\n* Estadio Clínico T1c-T2c\n* PSA ≤ 20 ng/mL"
+    }
+]

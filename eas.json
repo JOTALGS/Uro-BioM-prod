@@ -1,0 +1,16 @@
+{
+  "cli": {
+    "version": ">= 7.6.2"
+  },
+  "build": {
+    "preview": {
+      "ios": {
+        "simulator": true
+      }
+    },
+    "production": {}
+  },
+  "submit": {
+    "production": {}
+  }
+}
