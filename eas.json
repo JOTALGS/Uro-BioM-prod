@@ -11,6 +11,12 @@
     "production": {}
   },
   "submit": {
-    "production": {}
+    "production": {
+      "ios": {
+        "appleId": "rodriguez@southgenetics.com",
+        "ascAppId": "6499103490",
+        "appleTeamId": "YJS74KLDAM"
+      }
+    }
   }
 }

@@ -153,9 +153,9 @@ const ProfileScreen = ({navigation}) => {
 
   return (
   <View style={styles.container}>
-    <View style={styles.backButtonDiv}>
+    <View style={[styles.backButtonDiv]}>
      <TouchableOpacity
-        style={styles.backButton}
+        style={[styles.backButton]}
         onPress={() => navigation.navigate('Home')}>
         <View style={styles.iconTextContainer}>
           <Svg
@@ -176,22 +176,17 @@ const ProfileScreen = ({navigation}) => {
     </Canvas>
     <View style={styles.backView}>
     </View>
-    <View style={styles.buttonsContainer}>
+    <View style={[styles.buttonsContainer, {marginTop: '30%'}]}>
       <Animated.View  style={{ transform: [{ translateY }] }}>
         <TouchableOpacity
-          style={[styles.buttonInit, { marginTop: '8%' , height: '26%'}]}
+          style={[styles.buttonInit, { marginTop: '8%' , height: '35%'}]}
           onPress={() => navigation.navigate('listado')}>
           <Text style={[styles.buttonText, { marginTop: '6%' }]}>Biomarcadores disponibles</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={[styles.buttonInit, { height: '26%'}]}
+          style={[styles.buttonInit, { height: '35%'}]}
           onPress={() => navigation.navigate('algor')}>
-          <Text style={[styles.buttonText, { marginTop: '6%'}]}>¿Qué prueba recomendar?</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.buttonInit, { marginBottom: '8%', height: '26%' }]}
-          onPress={() => navigation.navigate('formulario')}>
-          <Text style={[styles.buttonText, { marginTop: '6%' }]}>Generar formulario SelectMDX</Text>
+          <Text style={[styles.buttonText, { marginTop: '6%'}]}>Seleccionar pruebas</Text>
         </TouchableOpacity>
       </Animated.View>
     </View>
@@ -274,12 +269,12 @@ const TratamientoScreen = ({navigation}) => {
         useNativeDriver: true, // Optimize performance (optional)
       }),
       Animated.timing(translateY2, {
-        toValue: 120, // Animate to the center (adjust offset for precise centering)
+        toValue: 130, // Animate to the center (adjust offset for precise centering)
         duration: 300, // Animation duration (adjust as desired)
         useNativeDriver: true, // Optimize performance (optional)
       }),
       Animated.timing(translateY3, {
-        toValue: 140, // Animate to the center (adjust offset for precise centering)
+        toValue: 160, // Animate to the center (adjust offset for precise centering)
         duration: 300, // Animation duration (adjust as desired)
         useNativeDriver: true, // Optimize performance (optional)
       }),
@@ -325,9 +320,9 @@ const TratamientoScreen = ({navigation}) => {
       </Animated.View >
       <Animated.View  style={{ transform: [{ translateY: translateY3 }] }}>
         <TouchableOpacity
-        style={[styles.buttonInit, { height: '55%', marginBottom: '8%' }]}
+        style={[styles.buttonInit, { height: 'auto', marginBottom: '8%' }]}
         onPress={() => navigation.navigate('SearchResult', { protatect: true })}>
-        <Text style={[styles.buttonText, { padding: '5%' , marginTop: '2%'}]}>Posterior a la prostatectomia radical para <Text style={{ textDecorationLine: 'underline' }}>decidir</Text> radioterapia adyuvante</Text>
+        <Text style={[styles.buttonText, { padding: '5%', alignSelf: 'center' }]}>Posterior a la prostatectomia radical para <Text style={{ textDecorationLine: 'underline' }}>decidir</Text> radioterapia adyuvante</Text>
         </TouchableOpacity>
       </Animated.View >
     </View>
@@ -432,7 +427,7 @@ const ListadoScreen = ({ navigation }) => {
 
   return (
     <View style={styles.containerListado}>
-    <View style={[styles.backButtonDiv, { paddingLeft: 20, paddingTop: 30,}]}>
+    <View style={[styles.backButtonDiv, { paddingLeft: 20, paddingTop: 30, marginLeft: '2%'}]}>
       <TouchableOpacity
           style={styles.backButton}
           onPress={() => navigation.navigate('Profile')}>
@@ -878,7 +873,7 @@ const FormularioScreen = () => {
       <Text style={styles.formText}>¿El paciente esta bajo tratamiento de 5-α-reductasa?</Text>
         <View style={[styles.picker, {flexDirection: 'row',}]}>
           <TouchableOpacity
-            style={[styles.tabButton, {width: '50%', marginVertical: 15}, unidad === 'cc' && styles.selectedTab]}
+            style={[styles.tabButton, {width: '50%', marginVertical: 15}, openInfo === true && styles.selectedTab]}
             onPress={() => setOpenInfo(true)}
           >
             <Text style={styles.tabText}>Si</Text>
@@ -956,7 +951,8 @@ const TestScreen = ({navigation, route}) =>{
         <Text style={[styles.tabContentText, {fontFamily: 'Raleway'}]}>
 
             { (testName === '4KScore') && (
-              <>
+              <View style={{ width: 320 ,}}>
+                <Text style={[styles.tabContentText, {fontFamily: 'Raleway'}]}>
                   El test 4Kscore mide los valores del PSA, PSA libre, PSA intacto y la Calicreína Humana 2 (H2K) en sangre, y confiere un score basado en estas medidas, así como en la edad del paciente y los hallazgos del último tacto rectal.
                   {"\n\n"}
                     <Text>
@@ -965,6 +961,7 @@ const TestScreen = ({navigation, route}) =>{
                     • Disminuye el número de biopsias innecesarias
                     </Text>
                     {"\n\n"}
+                </Text>
                 <View style={styles.graphDiv}>
                   <Image
                       source={require("./assets/4k-1.png")}
@@ -975,59 +972,65 @@ const TestScreen = ({navigation, route}) =>{
                       style={[styles.graphImage, { resizeMode: 'contain' }]}
                   />
                 </View>
-                {"\n"}
                   <Text style={[styles.infoSubTitle, {color: 'black'}]}>
+                    {"\n"}
                     Ventajas:
                   </Text>
-                  {"\n"}
-                  • Método no invasivo (muestra de sangre).
-                  {"\n"}
-                  • Evita biopsias innecesaria (30%-60%).
-                  {"\n"}
-                  • Superior al PSA, PSAlibre/PSAtotal y PSA D para diagnosticar CaP.
-                  {"\n"}
-                  • Capacidad de predecir CaP Gleason ≥ 7.
-                  {"\n\n"}
+                  <Text style={[styles.tabContentText, {fontFamily: 'Raleway'}]}>
+                    {"\n"}
+                    • Método no invasivo (muestra de sangre).
+                    {"\n"}
+                    • Evita biopsias innecesaria (30%-60%).
+                    {"\n"}
+                    • Superior al PSA, PSAlibre/PSAtotal y PSA D para diagnosticar CaP.
+                    {"\n"}
+                    • Capacidad de predecir CaP Gleason ≥ 7.
+                    {"\n\n"}
+                  </Text>
                   <Text style={styles.infoSubTitle}>
                     Desventajas:
                   </Text>
-                  {"\n"}
-                  • Mayores costos
-                  {"\n"}
-                  • Los resultados son interferidos por inhibidores de la 5-α-reductasa. Requiere de interrupción del tratamiento por al menos 6 meses.
-                  {"\n\n\n\n"}
+                  <Text style={[styles.tabContentText, {fontFamily: 'Raleway'}]}>
+                    {"\n"}
+                    • Mayores costos
+                    {"\n"}
+                    • Los resultados son interferidos por inhibidores de la 5-α-reductasa. Requiere de interrupción del tratamiento por al menos 6 meses.
+                    {"\n\n\n\n"}
+                  </Text>
                   <Text style={styles.infoSubTitle}>
                     Referencias:
                   </Text>
-                  {"\n"}
-                  1.
                 <Text
                     style={{ color: 'blue', textDecorationLine: 'underline' }}
                     onPress={() => Linking.openURL('https://suo--abstracts-secure--platform-com.translate.goog/a/gallery/rounds/1/details/387?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=sc')}
-                >
+                    >
+                    {"\n"}
+                    1.
                     Society of Urologic Oncology - THE 4KSCORE TEST AND SELECTMDX DO NOT INFORM DECISION WHETHER TO OBTAIN A MULTI-PARAMETRIC MRI IN MEN WITH  ELEVATED PSA
                 </Text>
-                {"\n\n"}
-                2.
                 <Text
                     style={{ color: 'blue', textDecorationLine: 'underline' }}
                     onPress={() => Linking.openURL('https://www.auajournals.org/doi/10.1097/JU.0000000000002102.19')}
-                >
+                    >
+                    {"\n\n"}
+                    2.
                     MP62-19 THE PERFORMANCE OF MPMRI AND THE 4KSCORE FOR PREDICTING PROGRESSION ON ACTIVE SURVEILLANCE: RESULTS FROM A SINGLE INSTITUTION PROSPECTIVE STUDY
+                  {"\n"}
                 </Text>
-                {"\n"}
-              </>
+              </View>
             )}
             { (testName === 'SelectMDX') && (
-              <>
-                • Estudio genético en orina{"\n"}
-                • Modelo multimodal que incorpora como biomarcadores urinarios:{"\n"}
-                  → Los genes HOXC6 y DLX1{"\n"}
-                  → La edad del paciente{"\n"}
-                  → El valor y la densidad del último PSA{"\n"}
-                  → Historia personal de biopsias prostáticas{"\n"}
-                  → Historia familiar{"\n"}
-                  {"\n"}
+              <View style={{ width: 320 ,}}>
+                <Text style={[styles.tabContentText, {fontFamily: 'Raleway'}]}>
+                  • Estudio genético en orina{"\n"}
+                  • Modelo multimodal que incorpora como biomarcadores urinarios:{"\n"}
+                    → Los genes HOXC6 y DLX1{"\n"}
+                    → La edad del paciente{"\n"}
+                    → El valor y la densidad del último PSA{"\n"}
+                    → Historia personal de biopsias prostáticas{"\n"}
+                    → Historia familiar{"\n"}
+                    {"\n"}
+                </Text>
                 <View style={styles.graphDiv}>
                   <Image
                       source={require("./assets/select-3.png")}
@@ -1042,56 +1045,62 @@ const TestScreen = ({navigation, route}) =>{
                       style={[styles.graphImage, { resizeMode: 'contain' }]}
                   />
                 </View>
-                {"\n"}
                 <Text style={styles.infoSubTitle}>
+                    {"\n"}
                     Ventajas:
                 </Text>
+                <Text style={[styles.tabContentText, {fontFamily: 'Raleway'}]}>
                   {"\n"}
                   • Alto VPN para tumores clínicamente significativos.{"\n"}
                   • Método no invasivo (muestra de orina).{"\n"}
                   • Evita repetición de biopsias innecesarias.{"\n\n"}
+                </Text>
                 <Text style={styles.infoSubTitle}>
                   Desventajas:
                 </Text>
-                {"\n"}
+                <Text style={[styles.tabContentText, {fontFamily: 'Raleway'}]}>
+                  {"\n"}
                   • Mayores costos.{"\n"}
                   • No existe un punto de corte establecido que facilite el accionar del urólogo.{"\n"}
-                {"\n\n\n\n"}
+                  {"\n\n\n\n"}
+                </Text>
                 <Text style={styles.infoSubTitle}>
                   Referencias:
                 </Text>
-                {"\n"}
-                1.      
                 <Text
                     style={{ color: 'blue', textDecorationLine: 'underline' }}
                     onPress={() => Linking.openURL('https://mdxhealth.com/select-mdx-for-physicians/')}
-                >
+                    >
+                    {"\n"}
+                    1.      
                     Select mdx for Physicians - mdxhealth
                 </Text>
-                {"\n\n"}
-                2.
                 <Text
                     style={{ color: 'blue', textDecorationLine: 'underline' }}
                     onPress={() => Linking.openURL('http://www.cancer.gov/types/prostate/psa-fact-sheet3')}
-                >
+                    >
+                    {"\n\n"}
+                    2.
                     American Cancer Society. PSA Test National Cancer Institute 
                 </Text>
-                {"\n\n"}
-                3.
                 <Text
                     style={{ color: 'blue', textDecorationLine: 'underline' }}
                     onPress={() => Linking.openURL('http://www.seer.cancer.gov/statfacts/html/prost.html')}
-                >
+                    >
+                    {"\n\n"}
+                    3.
                     Loeb et al.;  J Urol. 2011.6- NCI Seer Data 2015.
+                  {"\n"}                      
                 </Text>
-                {"\n"}                      
-              </>
+              </View>
             )}
             { (testName === 'ConfirmMDX') && (
-              <>
+              <View style={{ width: 320 ,}}>
+                <Text style={[styles.tabContentText, {fontFamily: 'Raleway'}]}>
                 • Estudia patrones de metilación anormales en los genes GSTP1, APC y RAFFF1, asociados a la presencia de CaP.{"\n"}
                 • Analiza todos los cilindros de la última biopsia prostática{"\n"}
                 {"\n"}
+                </Text>
                 <View style={styles.graphDiv}>
                   <Image
                       source={require("./assets/confirm-2.png")}
@@ -1106,142 +1115,160 @@ const TestScreen = ({navigation, route}) =>{
                       style={[styles.graphImage, { resizeMode: 'contain' }]}
                   />
                 </View>
-                {"\n"}
                 <Text style={styles.infoSubTitle}>
+                  {"\n"}
                     Ventajas:
                 </Text>
-                  {"\n"}
+                <Text style={[styles.tabContentText, {fontFamily: 'Raleway'}]}>
                   • Método no invasivo (se analiza el material de la biopsia).{"\n"}
                   • Evita la rebiopsia innecesaria cuando los resultados son negativos.{"\n"}
                   • Guía la rebiopsia a la zona donde se encontraron patrones de metilación aberrantes.{"\n\n"}
+                  {"\n"}
+                </Text>
                 <Text style={styles.infoSubTitle}>
                   Desventajas:
                 </Text>
-                {"\n"}
-                  • Mayores costos.{"\n"}
-                {"\n\n\n\n"}
+                <Text style={[styles.tabContentText, {fontFamily: 'Raleway'}]}>
+                  {"\n"}
+                    • Mayores costos.{"\n"}
+                  {"\n\n\n\n"}
+                </Text>
                 <Text style={styles.infoSubTitle}>
                   Referencias:
-                </Text>
-                {"\n"}
-                1.               
+                </Text>              
                 <Text
-                    style={{ color: 'blue', textDecorationLine: 'underline' }}
-                    onPress={() => Linking.openURL('https://mdxhealth.com/select-mdx-for-physicians/')}
+                  style={{ color: 'blue', textDecorationLine: 'underline' }}
+                  onPress={() => Linking.openURL('https://mdxhealth.com/select-mdx-for-physicians/')}
                 >
-                    Select mdx for Physicians - mdxhealth
+                  {"\n"}
+                  1. 
+                  Select mdx for Physicians - mdxhealth
                 </Text>
-                {"\n\n"}
-                2.
+
                 <Text
-                    style={{ color: 'blue', textDecorationLine: 'underline' }}
-                    onPress={() => Linking.openURL('http://www.cancer.gov/types/prostate/psa-fact-sheet3')}
+                  style={{ color: 'blue', textDecorationLine: 'underline' }}
+                  onPress={() => Linking.openURL('http://www.cancer.gov/types/prostate/psa-fact-sheet3')}
                 >
-                    American Cancer Society. PSA Test National Cancer Institute 
+                  {"\n\n"}
+                  2. American Cancer Society. PSA Test National Cancer Institute 
                 </Text>
-                {"\n\n"}
-                3.
                 <Text
-                    style={{ color: 'blue', textDecorationLine: 'underline' }}
-                    onPress={() => Linking.openURL('http://www.seer.cancer.gov/statfacts/html/prost.html')}
+                  style={{ color: 'blue', textDecorationLine: 'underline' }}
+                  onPress={() => Linking.openURL('http://www.seer.cancer.gov/statfacts/html/prost.html')}
                 >
-                    Loeb et al.;  J Urol. 2011.6- NCI Seer Data 2015.
+                  {"\n\n"}
+                  3. Loeb et al.;  J Urol. 2011.6- NCI Seer Data 2015.
+                  {"\n"}                      
                 </Text>
-                {"\n"}                      
-              </>
+              </View>
             )}
 
             { (testName === 'Oncotype') && (
-              <>
-                Análisis genómico que evalúa la expresión de 17 genes, incluidos 12 genes relacionados con cáncer representativos de 4 vías biológicas clave, y 5 genes de referencia.{"\n"}
-                Se indica en pacientes con CaP de bajo o muy bajo riesgo, en los que se quiere optar por una vigilancia activa.{"\n"}{"\n"}
+              <View style={{ width: 320 ,}}>
+                <Text style={[styles.tabContentText, {fontFamily: 'Raleway',}]}>                  
+                  Análisis genómico que evalúa la expresión de 17 genes, incluidos 12 genes relacionados con cáncer representativos de 4 vías biológicas clave, y 5 genes de referencia.{"\n"}
+                  Se indica en pacientes con CaP de bajo o muy bajo riesgo, en los que se quiere optar por una vigilancia activa.{"\n"}{"\n"}
+                </Text>
                 <Text style={styles.infoSubTitle}>
                   Predictor de:{"\n"}
                 </Text>
+                <Text style={[styles.tabContentText, {fontFamily: 'Raleway',}]}>        
                     • Tumores con Gleason ≥ 7{"\n"}
                     • Tumores no confinados a la próstata{"\n"}
                     • Recurrencia bioquímica{"\n"}
                     • Metástasis a distancia{"\n"}
                     • Muerte por cáncer de próstata{"\n"}{"\n"}
+                </Text>
                 <Text style={styles.infoSubTitle}>
                   Ventajas:{"\n"}
                 </Text>
+                <Text style={[styles.tabContentText, {fontFamily: 'Raleway',}]}>
                     • Método no invasivo (se analiza el tejido de la última biopsia).{"\n"}
                     • Es un buen marcador pronostico; predice patologías adversas y la recurrencia.{"\n"}
                     • Respalda la decisión de vigilancia activa.{"\n"}{"\n"}
+                </Text>
                 <Text style={styles.infoSubTitle}>
                   Desventajas:{"\n"}
                 </Text>
+                <Text style={[styles.tabContentText, {fontFamily: 'Raleway',}]}>
                     • Mayores costos.{"\n"}
                     • El GPS fue validad en pacientes fuera de tratamiento con inhibidores de la 5-α-reductada. NO se conoce si existe un efecto de interferencia de este medicamento con la prueba molecular GPS, por lo que se recomienda no realizar la prueba a estos pacientes.{"\n"}
                     • El tejido biópsico no debe haber recibido radioterapia.
                     {"\n\n\n\n"}
+                </Text>
                 <Text style={styles.infoSubTitle}>
                   Referencias:
                 </Text>     
-                {"\n"}
-                1.
                 <Text
                     style={{ color: 'blue', textDecorationLine: 'underline' }}
                     onPress={() => Linking.openURL('https://mdxhealth.com/gps-physician/')}
-                >
+                    >
+                    {"\n"}
+                    1.
                     GPS Physician - mdxhealth
+                    {"\n"}
                 </Text>
-              {"\n"}
-              </>
+              </View>
             )}
 
             { (testName === 'Decipher') && (
-              <>
-                Evalúa la expresión de 22 genes vinculados a diferentes vías biológicas del cáncer de próstata.{"\n"}
-                Permite predecir con mayor certeza la probabilidad de que un paciente con un tumor de alto riesgo sometido a una prostatectomía radical presente metástasis luego de la cirugía.{"\n"}
-                El resultado se expresa en bajo, intermedio y alto riesgo.{"\n"}
-                {"\n"}
-                <Text style={styles.infoSubTitle}>
-                Evalúa:{"\n"}
+              <View style={{ width: 320 ,}}>
+                <Text style={[styles.tabContentText, {fontFamily: 'Raleway',}]}>
+                  Evalúa la expresión de 22 genes vinculados a diferentes vías biológicas del cáncer de próstata.{"\n"}
+                  Permite predecir con mayor certeza la probabilidad de que un paciente con un tumor de alto riesgo sometido a una prostatectomía radical presente metástasis luego de la cirugía.{"\n"}
+                  El resultado se expresa en bajo, intermedio y alto riesgo.{"\n"}
+                  {"\n"}
                 </Text>
+                <Text style={styles.infoSubTitle}>
+                  Evalúa:{"\n"}
+                </Text>
+                <Text style={[styles.tabContentText, {fontFamily: 'Raleway',}]}>
                   • Aparición de metástasis a 5 años, 10 y 15 años.{"\n"}
                   • Patología adversa.{"\n"}
                   • Muerte por CaP.{"\n"}
                   Y da pautas sobre la respuesta a la radioterapia de rescate, la terapia adyuvante, y hormonoterapia.
                   {"\n"}
+                </Text>
                 <View style={styles.graphDiv}>
                   <Image
                       source={require("./assets/decipher-1.png")}
                       style={[styles.graphImage, { resizeMode: 'contain' }]}
                   />
                 </View>
-                {"\n"}
                 <Text style={styles.infoSubTitle}>
+                  {"\n"}
                   Ventajas:{"\n"}
                 </Text>
+                <Text style={[styles.tabContentText, {fontFamily: 'Raleway',}]}>
                   • Posee un importante valor pronóstico.{"\n"}
                   • Evita tratamientos adyuvantes innecesario en aquellos pacientes con bajo riesgo a metástasis.{"\n"}
                   • Permite optar por el tratamiento con adyuvante en aquellos pacientes con riesgo de metástasis elevados, en los cuales una conducta conservadora luego de la cirugía puede ser perjudicial..{"\n"}
                   {"\n"}
+                </Text>
                 <Text style={styles.infoSubTitle}>
                   Desventajas:{"\n"}
                 </Text>
+                <Text style={[styles.tabContentText, {fontFamily: 'Raleway',}]}>
                   • Mayores costos.{"\n"}
                   {"\n\n\n\n"}
+                </Text>
                 <Text style={styles.infoSubTitle}>
                   Referencias:
                 </Text>     
-                {"\n"}
-                1.
                 <Text
                     style={{ color: 'blue', textDecorationLine: 'underline' }}
                     onPress={() => Linking.openURL('https://www.veracyte.com/decipher-prostate/')}
-                >
-                    Decipher Prostate - Veracyte
+                    >
+                    {"\n"}
+                    1. Decipher Prostate - Veracyte
                 </Text>
-              </>
+              </View>
             )}
-            {"\n\n\n"}
             <Text
                 style={{ color: 'blue', textDecorationLine: 'underline' }}
                 onPress={() => Linking.openURL('mailto:infouy@southgenetics.com')}
-            >
+                >
+                {"\n\n\n"}
                 Para solicitar más información de esta prueba por mail, click aquí.
             </Text>
         </Text>
@@ -1285,13 +1312,12 @@ const TestScreen = ({navigation, route}) =>{
             </Text>
             )}
             { (testName === 'Decipher') && (
-              <>
-                <Text style={[styles.tabContentText, {fontFamily: 'Raleway'}]}>
+              <View style={{ width: 320 ,}}>
+                <Text style={[styles.tabContentText, {fontFamily: 'Raleway',}]}>
                   {"\n"}   
                   Postura recomendada ante los resultados:{"\n"}{"\n"}
                   El score va de 0 a 1{"\n"}
                 </Text>
-                {"                                                                                 "}
                 <View style={[styles.graphDiv]}>
                     <Image
                         source={require("./assets/decipher-3.png")}
@@ -1306,7 +1332,7 @@ const TestScreen = ({navigation, route}) =>{
                         style={[styles.graphImage, { resizeMode: 'contain'}]}
                     />
                   </View>
-                </>
+                </View>
             )}
           </Text>
         </>
@@ -1317,7 +1343,7 @@ const TestScreen = ({navigation, route}) =>{
       <>
         <Text style={[styles.tabContentText, {fontFamily: 'Raleway'}]}>
           {(testName === '4KScore') && (
-            <>
+            <View style={{ width: 320 ,}}>
               <View style={styles.graphDiv}>
                   <Image
                       source={require("./assets/4k-5.png")}
@@ -1332,15 +1358,17 @@ const TestScreen = ({navigation, route}) =>{
                       style={[styles.graphImage, { resizeMode: 'contain' }]}
                   />
               </View>
-              {"\n"}
-              • Reporte gráfico en español y reporte clínico en inglés.{"\n"}
-              • El paciente no debe estar bajo tratamiento con inhibidores de la 5-α-reductasa.{"\n"}
-              • No se puede haber realizado un TR en las 96 hs previas, mantenido relaciones sexuales o haber realizado actividad física de alto rendimiento.{"\n"}
-              </>
+              <Text style={[styles.tabContentText, {fontFamily: 'Raleway',}]}>
+                {"\n"}
+                • Reporte gráfico en español y reporte clínico en inglés.{"\n"}
+                • El paciente no debe estar bajo tratamiento con inhibidores de la 5-α-reductasa.{"\n"}
+                • No se puede haber realizado un TR en las 96 hs previas, mantenido relaciones sexuales o haber realizado actividad física de alto rendimiento.{"\n"}
+              </Text>
+              </View>
             )}
             
             { (testName === 'SelectMDX') && (
-            <>
+            <View style={{ width: 320 ,}}>
               <View style={styles.graphDiv}>
                 <Image
                     source={require("./assets/select-4.png")}
@@ -1355,55 +1383,57 @@ const TestScreen = ({navigation, route}) =>{
                       style={[styles.graphImage, { resizeMode: 'contain' }]}
                   />
               </View>
-              {"\n"}
-              • El paciente no debe estar bajo tratamiento con inhibidores de la 5-α-reductasa.{"\n"}
-              • Fecha del último PSA ≤ 6 meses.{"\n"}
-              • Fecha de la última biopsia (en caso de corresponder) ≤ 3 meses.{"\n"}
-              • Se requiere aportar valor del último PSA, volumen prostático, antecedentes familiares de CaP y raza.{"\n"}
-              {"\n"}
+              <Text style={[styles.tabContentText, {fontFamily: 'Raleway',}]}>
+                {"\n"}
+                • El paciente no debe estar bajo tratamiento con inhibidores de la 5-α-reductasa.{"\n"}
+                • Fecha del último PSA ≤ 6 meses.{"\n"}
+                • Fecha de la última biopsia (en caso de corresponder) ≤ 3 meses.{"\n"}
+                • Se requiere aportar valor del último PSA, volumen prostático, antecedentes familiares de CaP y raza.{"\n"}
+                {"\n"}
+              </Text>
               <Text
                 style={{ color: 'blue', textAlign: 'center'}}
                 onPress={() => navigation.navigate('formulario')}
               >
                 Generar formulario SelectMDX, click aqui.
               </Text>
-            </>
+            </View>
           )}
 
           { (testName === 'ConfirmMDX') && (
-            <>
+            <View style={{ width: 320 ,}}>
               <View style={styles.graphDiv}>
                   <Image
                       source={require("./assets/confirm-4.png")}
-                      style={[styles.graphImage, { resizeMode: 'contain', width: '350%',}]}
+                      style={[styles.graphImage, { resizeMode: 'contain',}]}
                   />
                   <Image
                       source={require("./assets/confirm-5.png")}
-                      style={[styles.graphImage, { resizeMode: 'contain', width: '350%',}]}
+                      style={[styles.graphImage, { resizeMode: 'contain',}]}
                   />
                   <Image
                       source={require("./assets/4k-3.png")}
-                      style={[styles.graphImage, { resizeMode: 'contain', width: '350%',}]}
+                      style={[styles.graphImage, { resizeMode: 'contain',}]}
                   />
               </View>
-              {"\n"}
               <View style={{ textAlign: 'center', width: 300,}}>
                 <Text style={[styles.infoSubTitle]}>
+                {"\n"}
                 → Fecha de la última biopsia ≤ 24 meses
+                {"\n"}
+                {"\n"}
                 </Text>
               </View>
-              {"\n"}
-              {"\n"}
               <View style={{ textAlign: 'center', width: 300,}}>
                 <Text style={[styles.infoSubTitle]}>
                 → Sólo se aceptan muestras de biopsia trans rectal.
                 </Text>
               </View>
-            </>
+            </View>
           )}
           
           { (testName === 'Oncotype') && (
-            <>
+            <View style={{ width: 320 ,}}>
               <View style={styles.graphDiv}>
                   <Image
                       source={require("./assets/gps-1.png")}
@@ -1422,69 +1452,71 @@ const TestScreen = ({navigation, route}) =>{
               {"\n"}
               • Fecha de la biopsia ≤ 3 años.{"\n"}
               • No se acepta tejido de RTU.{"\n"}
-              • No se puede realizar sobre tejido que fue sometido a Redioterapia.{"\n\n\n"}
-              Criterios de inclusión:{"\n"}{"\n"}
+              • No se puede realizar sobre tejido que fue sometido a Redioterapia.{"\n\n\n\n"}
+              Criterios de inclusión:{"\n"}
             </Text>
-            NCCN Muy bajo riesgo (debe presentar TODOS los siguientes criterios):{"\n"}
-            → Gleason Score ≤ 6.{"\n"}
-            → PSA {"<"} 10 ng/mL.{"\n"}
-            → Estadio clínico T1c.{"\n"}
-            → Menos de 3 cilindros/filamentos positivos, ≤ 50% compromiso tumoral en cualquier cilindro/filamento\n.{"\n"}
-            → PSA densidad {"<"} 0.15 ng/mL/g{"\n"}
+            <Text style={[styles.tabContentText, {fontFamily: 'Raleway',}]}>
+              NCCN Muy bajo riesgo (debe presentar TODOS los siguientes criterios):{"\n"}
+              → Gleason Score ≤ 6.{"\n"}
+              → PSA {"<"} 10 ng/mL.{"\n"}
+              → Estadio clínico T1c.{"\n"}
+              → Menos de 3 cilindros/filamentos positivos, ≤ 50% compromiso tumoral en cualquier cilindro/filamento\n.{"\n"}
+              → PSA densidad {"<"} 0.15 ng/mL/g{"\n"}
+                {"\n\n"}
+              NCCN Bajo riesgo (debe presentar TODOS los siguientes criterios):{"\n"}
+              → Gleason Score ≤ 6\n- PSA {"<"} 10 ng/mL\n.{"\n"}
+              → Estadio Clínico T1c-T2a{"\n"}
               {"\n\n"}
-            NCCN Bajo riesgo (debe presentar TODOS los siguientes criterios):{"\n"}
-            → Gleason Score ≤ 6\n- PSA {"<"} 10 ng/mL\n.{"\n"}
-            → Estadio Clínico T1c-T2a{"\n"}
-            {"\n\n"}
-            NCCN Riesgo intermedio (debe cumplir UNO de los siguientes criterios):{"\n"}
-            → Gleason Score ≤ 6, Y{"\n"}
-            {"    "}* Estadio Clínico T2b-T2c, O{"\n"}
-            {"    "}* PSA 10-20 ng/mL{"\n"}
-            → Gleason Score 3+4, Y todo lo siguiente:{"\n"}
-            {"    "}* Estadio Clínico T1c-T2c{"\n"}
-            {"    "}* PSA ≤ 20 ng/mL{"\n"}
-            → Gleason Score 4+3, Y todo los siguiente:{"\n"}
-            {"    "}* Estadio Clínico T1c-T2c{"\n"}
-            {"    "}* PSA ≤ 20 ng/mL{"\n"}
-            {"\n"}
+              NCCN Riesgo intermedio (debe cumplir UNO de los siguientes criterios):{"\n"}
+              → Gleason Score ≤ 6, Y{"\n"}
+              {"    "}* Estadio Clínico T2b-T2c, O{"\n"}
+              {"    "}* PSA 10-20 ng/mL{"\n"}
+              → Gleason Score 3+4, Y todo lo siguiente:{"\n"}
+              {"    "}* Estadio Clínico T1c-T2c{"\n"}
+              {"    "}* PSA ≤ 20 ng/mL{"\n"}
+              → Gleason Score 4+3, Y todo los siguiente:{"\n"}
+              {"    "}* Estadio Clínico T1c-T2c{"\n"}
+              {"    "}* PSA ≤ 20 ng/mL{"\n"}
+              {"\n"}
+            </Text>
               <Text
                   style={{ color: 'blue', textDecorationLine: 'underline' }}
                   onPress={() => Linking.openURL('https://mdxhealth.com/gps-physician/')}
               >
                   GPS Physician - mdxhealth
-              </Text>
               {"\n"}
-            </>
+              </Text>
+            </View>
           )}
           { (testName === 'Decipher') && (
-            <>
+            <View style={{ width: 320 ,}}>
               <View style={styles.graphDiv}>
                   <Image
                       source={require("./assets/decipher-5.png")}
-                      style={[styles.graphImage, { resizeMode: 'contain', width: '350%',}]}
+                      style={[styles.graphImage, { resizeMode: 'contain'}]}
                   />
                   <Image
                       source={require("./assets/decipher-6.png")}
-                      style={[styles.graphImage, { resizeMode: 'contain', width: '350%',}]}
+                      style={[styles.graphImage, { resizeMode: 'contain'}]}
                   />
                   <Image
                       source={require("./assets/4k-3.png")}
-                      style={[styles.graphImage, { resizeMode: 'contain', width: '350%',}]}
+                      style={[styles.graphImage, { resizeMode: 'contain'}]}
                   />
               </View>
               <View style={{ textAlign: 'center', width: 300,}}>
                 <Text style={[styles.infoSubTitle]}>
                 → Fecha de la última biopsia ≤ 5 años
+              {"\n"}
                 </Text>
               </View>
-              {"\n"}
-              {"\n"}
               <View style={{ textAlign: 'center', width: 300,}}>
                 <Text style={[styles.infoSubTitle]}>
+              {"\n"}
                 → No se puede realizar sobre tejido que fue sometido a Redioterapia.
                 </Text>
               </View>
-            </>
+            </View>
           )}
         </Text>
       </>
@@ -1552,7 +1584,12 @@ const TestScreen = ({navigation, route}) =>{
               source={require("./assets/selectmdx.png")}
               style={[styles.imageForTest, { resizeMode: 'contain', height: 200,}]} // Add resizeMode prop
             />
-            <Text style={[styles.title, { color: '#0081a1' }]}>Marcadores diagnósticos previos a la primera biopsia prostática</Text>
+            <Text style={[styles.title, { color: '#0081a1', marginBottom: 1, }]}>Marcadores diagnósticos previos a la primera biopsia prostática</Text>
+            <TouchableOpacity
+              style={[{backgroundColor: '#c0bebe60', borderRadius:55, marginVertical: 20,}]}
+              onPress={() => navigation.navigate('formulario')}>
+              <Text style={[{padding: 10, paddingHorizontal: 15, color: '#0081a1', fontWeight: 'bold', fontSize: 16, }]}>Generar formulario SelectMDX</Text>
+            </TouchableOpacity>
           </>
         )}
         { (testName === 'ConfirmMDX') && (
@@ -1614,7 +1651,7 @@ const TestScreen = ({navigation, route}) =>{
             <View style={[styles.tabContent, {backgroundColor: "#d6eca1d0"}]}>{tabContent}</View>
           )}
           { testName === 'Decipher' && (
-            <View style={[styles.tabContent, {backgroundColor: "#7d87db8c"}]}>{tabContent}</View>
+            <View style={[styles.tabContent, {backgroundColor: "#9098da8c"}]}>{tabContent}</View>
           )}
         </View>
       </View>
@@ -1719,7 +1756,7 @@ const SearchresultScreen = ({ route, navigation }) => {
 return (
   <View style={[styles.containerListado, {flex: 1, justifyContent: 'flex-start'}]}>
       { ((!protatect && !biopsia) || (biopsia && resultado === 'Negativo')) && (
-      <View style={[styles.backButtonDiv, { padding: 10, paddingLeft: 25, paddingTop: 20,}]}>
+      <View style={[styles.backButtonDiv, { padding: 10, paddingLeft: 25, paddingTop: 20, marginTop: '4%', marginLeft: '2%'}]}>
         <TouchableOpacity
           style={styles.backButton}
           onPress={() => navigation.navigate('diagnostico')}>
@@ -1739,7 +1776,7 @@ return (
       </View>
       )}
       { ((protatect) || (biopsia && resultado === 'Positivo')) && (
-      <View style={[styles.backButtonDiv, { padding: 10, paddingLeft: 25, paddingTop: 20,}]}>
+      <View style={[styles.backButtonDiv, { padding: 10, paddingLeft: 25, paddingTop: 20, marginTop: '4%', marginLeft: '2%'}]}>
         <TouchableOpacity
           style={styles.backButton}
           onPress={() => navigation.navigate('tratamiento')}>
@@ -1991,7 +2028,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'flex-start',
     marginRight: '80%',
-    paddingTop: '3%',
+    marginTop: '1%',
     height: 50,
   },
   iconTextContainer: {
@@ -2222,9 +2259,9 @@ const styles = StyleSheet.create({
     marginBottom: 60,
   },
   tabContentText: {
-      fontSize: 17,
+      fontSize: 19,
       padding: 10,
-      color: '#5c5c5cfd',
+      color: '#3b3b3bfd',
   },
   dataContainer: {
     backgroundColor: backColor,
@@ -2367,14 +2404,13 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   graphDiv: {
-    left: 500,
     width: 100,
     paddingRight: 15,
   },
   graphImage: {
     borderRadius: 25,
     marginVertical:20,
-    width: '370%',
+    width: 310,
     height: 250,
   },
   infoSubTitle: {
@@ -2382,5 +2418,4 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: 'black'
   },
-
 });
